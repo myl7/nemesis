@@ -12,3 +12,6 @@ keywords = ["moderation", "e2ee", "threshold-report", "tracing"]
 # categories = []
 
 [dependencies]
+aes-gcm = "0.10.2"
+ring-compat = "0.7.0"
+sha2 = "0.10.7"
