@@ -1,0 +1,14 @@
+[package]
+name = "eemod"
+version = "0.1.0"
+edition = "2021"
+authors = ["myl7 <myl@myl.moe>"]
+# description = ""
+documentation = "https://github.com/myl7/eemod#readme"
+homepage = "https://github.com/myl7/eemod"
+repository = "https://github.com/myl7/eemod.git"
+# license = ""
+keywords = ["moderation", "e2ee", "threshold-report", "tracing"]
+# categories = []
+
+[dependencies]
