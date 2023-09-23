@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package eems;
+
+service EemsForSend {
+  rpc GenId(GenIdReq) returns (GenIdRes);
+}
+
+message GenIdReq {
+  bytes ct = 1;
+  bytes ct_hash = 2;
+  bytes ct_hash_ct = 3;
+  Auth auth = 101;
+}
+
+message GenIdRes {
+  bytes src_ct = 1;
+  bytes sign = 2;
+}
+
+message GenIdSignedPack {
+  bytes src_ct = 1;
+  bytes ct_hash = 2;
+  bytes ct_hash_ct = 3;
+}
+
+message Auth {
+  bytes id = 1;
+  bytes id_sign = 2;
+}

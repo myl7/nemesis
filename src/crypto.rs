@@ -46,6 +46,21 @@ pub mod sym {
         let cipher = Aes128Gcm::new(key_obj);
         cipher.decrypt(nonce, ct).map_err(|_| ())
     }
+
+    #[cfg(test)]
+    mod tests {
+        use rand::prelude::*;
+
+        use super::*;
+
+        #[test]
+        fn test_sym_enc_dec_ok() {
+            let key: SymK = thread_rng().gen();
+            let pt = b"Hello, world!";
+            let ct = sym_enc(&key, pt);
+            assert_eq!(sym_dec(&key, &ct).unwrap(), pt);
+        }
+    }
 }
 
 pub use pk::{pk_pk, pk_sign, pk_verify};
@@ -75,5 +90,21 @@ pub mod pk {
         let pk_obj = VerifyingKey::from_slice(pk).unwrap();
         let sign_obj = Signature::from_slice(sign).unwrap();
         pk_obj.verify(data, &sign_obj).map_err(|_| ())
+    }
+
+    #[cfg(test)]
+    mod tests {
+        use rand::prelude::*;
+
+        use super::*;
+
+        #[test]
+        fn test_sign_verify_ok() {
+            let sk: SK = thread_rng().gen();
+            let pk = pk_pk(&sk);
+            let data = b"Hello, world!";
+            let sign = pk_sign(&sk, data);
+            assert!(pk_verify(&pk, data, &sign).is_ok());
+        }
     }
 }

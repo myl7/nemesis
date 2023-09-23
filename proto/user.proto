@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package user;
+
+message MsgId {
+  bytes msg_key = 1;
+  bytes ct_hash = 2;
+  bytes src_ct = 3;
+  bytes sign = 4;
+}
+
+message Msg {
+  bytes id_bs = 1;
+  bytes body = 2;
+}
+
+message EeMsg {
+  EeMsgHeader header = 1;
+  bytes ct = 2;
+}
+
+message EeMsgHeader {
+  /// Counts the number of messages that have been sent in the current send ratchet
+  uint32 n = 1;
+  /// Counts the number of messages that have been sent in the previous send ratchet
+  uint32 pn = 2;
+}
