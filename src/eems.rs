@@ -43,15 +43,7 @@ impl EemsForSend for EemsForSendImpl {
             return Err(Status::unauthenticated(""));
         }
 
-        let id_key: SymK = thread_rng().gen();
-        let src_ct = crypto::sym_enc(&id_key, user_id.as_bytes());
-        let signed_buf = GenIdSignedPack {
-            src_ct: src_ct.clone(),
-            ct_hash: ct_hash.clone(),
-            ct_hash_ct,
-        }
-        .encode_to_vec();
-        let sign = crypto::pk_sign(&self.sk, &signed_buf);
+        let (src_ct, sign, id_key) = self.gen_id_by_eems(&user_id, &ct_hash, ct_hash_ct);
 
         self.db
             .put_id_archive(&ct_hash.try_into().unwrap(), IdArchive { ct, id_key })
@@ -61,6 +53,26 @@ impl EemsForSend for EemsForSendImpl {
             src_ct,
             sign: sign.to_vec(),
         }));
+    }
+}
+
+impl EemsForSendImpl {
+    pub fn gen_id_by_eems(
+        &self,
+        user_id: &Uuid,
+        ct_hash: &Vec<u8>,
+        ct_hash_ct: Vec<u8>,
+    ) -> (Vec<u8>, Sign, SymK) {
+        let id_key: SymK = thread_rng().gen();
+        let src_ct = crypto::sym_enc(&id_key, user_id.as_bytes());
+        let signed_buf = GenIdSignedPack {
+            src_ct: src_ct.clone(),
+            ct_hash: ct_hash.clone(),
+            ct_hash_ct,
+        }
+        .encode_to_vec();
+        let sign = crypto::pk_sign(&self.sk, &signed_buf);
+        (src_ct, sign, id_key)
     }
 }
 

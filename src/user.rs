@@ -31,24 +31,9 @@ impl Sender {
     }
 
     pub async fn gen_id(&self, body: &[u8], msg_key: SymK) -> Result<MsgId> {
-        let ct = crypto::sym_enc(&msg_key, body);
-        let ct_hash = crypto::hash(&ct);
-        let ct_hash_ct = crypto::sym_enc(&msg_key, &ct_hash);
+        let (req, ct_hash) = self.gen_id_by_user(body, &msg_key);
 
-        let GenIdRes { src_ct, sign } = self
-            .eems_client
-            .clone()
-            .gen_id(GenIdReq {
-                ct,
-                ct_hash: ct_hash.to_vec(),
-                ct_hash_ct,
-                auth: Some(Auth {
-                    id: self.id.as_bytes().to_vec(),
-                    id_sign: self.id_sign.to_vec(),
-                }),
-            })
-            .await?
-            .into_inner();
+        let GenIdRes { src_ct, sign } = self.eems_client.clone().gen_id(req).await?.into_inner();
 
         Ok(MsgId {
             msg_key: msg_key.to_vec(),
@@ -56,6 +41,25 @@ impl Sender {
             src_ct,
             sign,
         })
+    }
+
+    pub fn gen_id_by_user(&self, body: &[u8], msg_key: &SymK) -> (GenIdReq, Digest) {
+        let ct = crypto::sym_enc(&msg_key, body);
+        let ct_hash = crypto::hash(&ct);
+        let ct_hash_ct = crypto::sym_enc(&msg_key, &ct_hash);
+
+        (
+            GenIdReq {
+                ct,
+                ct_hash: ct_hash.to_vec(),
+                ct_hash_ct,
+                auth: Some(Auth {
+                    id: self.id.as_bytes().to_vec(),
+                    id_sign: self.id_sign.to_vec(),
+                }),
+            },
+            ct_hash,
+        )
     }
 
     pub async fn gen_msg(

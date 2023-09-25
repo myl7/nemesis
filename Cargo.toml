@@ -32,6 +32,10 @@ uuid = "1.4.1"
 name = "gen_id"
 harness = false
 
+[[bench]]
+name = "gen_id_by_entities"
+harness = false
+
 [build-dependencies]
 tonic-build = "0.10.0"
 
