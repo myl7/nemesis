@@ -12,7 +12,7 @@ use uuid::Uuid;
 use crate::crypto;
 use crate::crypto::prelude::*;
 use crate::grpc::eems::eems_for_send_client::EemsForSendClient;
-use crate::grpc::eems::{Auth, GenIdReq, GenIdRes};
+use crate::grpc::eems::{Auth, GenIdReq, GenIdRes, GenIdSignedPack};
 use crate::grpc::user::{EeMsg, EeMsgHeader, Msg, MsgId};
 
 pub struct Sender {
@@ -99,5 +99,37 @@ impl Sender {
         };
 
         Ok(ee_msg)
+    }
+}
+
+pub struct Receiver {
+    eems_pk: PK,
+}
+
+impl Receiver {
+    pub fn new(eems_pk: PK) -> Self {
+        Self { eems_pk }
+    }
+
+    pub fn verify_msg(&self, body: &[u8], msg_id: &MsgId) -> Result<(), ()> {
+        let msg_key: &SymK = msg_id.msg_key.as_slice().try_into().unwrap();
+        let ct_hash: &Digest = msg_id.ct_hash.as_slice().try_into().unwrap();
+        let src_ct = &msg_id.src_ct;
+        let sign: &Sign = msg_id.sign.as_slice().try_into().unwrap();
+
+        let ct = crypto::sym_enc(msg_key, body);
+        if ct_hash != &crypto::hash(&ct) {
+            return Err(());
+        }
+
+        let ct_hash_ct = crypto::sym_enc(msg_key, ct_hash);
+        let signed_buf = GenIdSignedPack {
+            src_ct: src_ct.to_vec(),
+            ct_hash: ct_hash.to_vec(),
+            ct_hash_ct,
+        }
+        .encode_to_vec();
+
+        crypto::pk_verify(&self.eems_pk, &signed_buf, sign)
     }
 }

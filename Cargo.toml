@@ -36,6 +36,10 @@ harness = false
 name = "gen_id_by_entities"
 harness = false
 
+[[bench]]
+name = "verify_msg"
+harness = false
+
 [build-dependencies]
 tonic-build = "0.10.0"
 

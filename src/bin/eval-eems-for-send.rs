@@ -1,7 +1,6 @@
 use std::env::{temp_dir, var};
 use std::sync::{Arc, Mutex};
 
-use rand::prelude::*;
 use tonic::transport::Server;
 use uuid::Uuid;
 
@@ -16,7 +15,10 @@ async fn main() {
     let rocksdb_inner = rocksdb::DB::open_default(rocksdb_path).unwrap();
     let db = Db::new(Arc::new(Mutex::new(rocksdb_inner)));
 
-    let sk: SK = thread_rng().gen();
+    let sk: SK = hex::decode(var("EEMOD_EVAL_EEMS_SK").unwrap())
+        .unwrap()
+        .try_into()
+        .unwrap();
 
     let user_pk_s = var("EEMOD_EVAL_SENDER_PK").unwrap();
     let user_pk: PK = hex::decode(user_pk_s).unwrap().try_into().unwrap();
