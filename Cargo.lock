@@ -370,8 +370,8 @@ dependencies = [
 
 [[package]]
 name = "cbc-aes256-pkcs7-compact"
-version = "0.1.0"
-source = "git+https://github.com/myl7/double-ratchet-signal.git#0b765241b9119a176ec68127f20543876b6bc27e"
+version = "0.1.1"
+source = "git+https://github.com/myl7/double-ratchet-signal.git#e44805dca67b5c12a549dbf7652ee7097b76820a"
 dependencies = [
  "aes 0.8.3",
  "cbc",
@@ -683,8 +683,8 @@ dependencies = [
 
 [[package]]
 name = "double-ratchet-signal"
-version = "0.1.1"
-source = "git+https://github.com/myl7/double-ratchet-signal.git#0b765241b9119a176ec68127f20543876b6bc27e"
+version = "0.1.2"
+source = "git+https://github.com/myl7/double-ratchet-signal.git#e44805dca67b5c12a549dbf7652ee7097b76820a"
 dependencies = [
  "aes 0.6.0",
  "block-modes",

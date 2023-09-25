@@ -16,7 +16,7 @@ aes-gcm = "0.10.2"
 anyhow = "1.0.75"
 async-trait = "0.1.73"
 double-ratchet = "0.1.0"
-double-ratchet-signal = { git = "https://github.com/myl7/double-ratchet-signal.git", version = "0.1.1" }
+double-ratchet-signal = { git = "https://github.com/myl7/double-ratchet-signal.git", version = "0.1.2" }
 hex = "0.4.3"
 prost = "0.12.1"
 rand = { version = "0.8.5", features = ["std", "std_rng"] }
