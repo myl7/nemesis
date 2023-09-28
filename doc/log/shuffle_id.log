@@ -1,0 +1,56 @@
+shuffle_id_gen_z2_by_party2/10000
+                        time:   [8.0460 ms 8.0747 ms 8.1069 ms]
+                        change: [-3.9130% -3.3979% -2.8825%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 4 outliers among 100 measurements (4.00%)
+  3 (3.00%) high mild
+  1 (1.00%) high severe
+
+shuffle_id_gen_z1_by_party1/10000
+                        time:   [15.682 ms 15.754 ms 15.833 ms]
+Found 14 outliers among 100 measurements (14.00%)
+  7 (7.00%) high mild
+  7 (7.00%) high severe
+
+shuffle_id_gen_id_by_party2/10000
+                        time:   [13.757 ms 13.795 ms 13.840 ms]
+Found 10 outliers among 100 measurements (10.00%)
+  7 (7.00%) high mild
+  3 (3.00%) high severe
+
+shuffle_id_gen_z2_by_party2/100000
+                        time:   [87.996 ms 88.181 ms 88.383 ms]
+Found 2 outliers among 100 measurements (2.00%)
+  1 (1.00%) high mild
+  1 (1.00%) high severe
+
+shuffle_id_gen_z1_by_party1/100000
+                        time:   [164.27 ms 164.50 ms 164.76 ms]
+Found 8 outliers among 100 measurements (8.00%)
+  7 (7.00%) high mild
+  1 (1.00%) high severe
+
+shuffle_id_gen_id_by_party2/100000
+                        time:   [145.89 ms 146.62 ms 147.43 ms]
+Found 17 outliers among 100 measurements (17.00%)
+  3 (3.00%) high mild
+  14 (14.00%) high severe
+
+shuffle_id_gen_z2_by_party2/1000000
+                        time:   [933.00 ms 933.53 ms 934.16 ms]
+Found 4 outliers among 100 measurements (4.00%)
+  3 (3.00%) high mild
+  1 (1.00%) high severe
+
+shuffle_id_gen_z1_by_party1/1000000
+                        time:   [1.5995 s 1.6012 s 1.6029 s]
+Found 1 outliers among 100 measurements (1.00%)
+  1 (1.00%) high mild
+
+shuffle_id_gen_id_by_party2/1000000
+                        time:   [1.4812 s 1.4821 s 1.4830 s]
+Found 9 outliers among 100 measurements (9.00%)
+  5 (5.00%) low mild
+  2 (2.00%) high mild
+  2 (2.00%) high severe
+

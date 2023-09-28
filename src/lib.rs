@@ -1,7 +1,9 @@
 pub mod crypto;
 pub mod db;
 pub mod eems;
+pub mod msp;
 pub mod user;
+pub mod utils;
 
 pub mod grpc {
     pub mod eems {
