@@ -56,3 +56,11 @@ For 2 shares in total: 11312 B
 Steps:
 
 1. Run `eval-id-share-size` and get the result from the output
+
+## Time of ID share generation
+
+Steps:
+
+1. Run `cargo bench --bench gen_id_shares` and get the result from the output
+
+- `gen_id_shares` raw log: [gen_id_shares.log](log/gen_id_shares.log)

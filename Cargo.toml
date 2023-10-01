@@ -48,6 +48,10 @@ harness = false
 name = "shuffle_id"
 harness = false
 
+[[bench]]
+name = "gen_id_shares"
+harness = false
+
 [build-dependencies]
 tonic-build = "0.10.0"
 
