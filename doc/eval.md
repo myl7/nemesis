@@ -48,3 +48,11 @@ Steps:
 1. Run `cargo bench --bench shuffle_id` and get the result from the output
 
 - `shuffle_id` raw log: [shuffle_id.log](log/shuffle_id.log)
+
+## Communication payload for ID shares
+
+For 2 shares in total: 11312 B
+
+Steps:
+
+1. Run `eval-id-share-size` and get the result from the output

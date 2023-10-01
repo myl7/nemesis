@@ -1,6 +1,10 @@
 use anyhow::Result;
+use dcf::CmpFn;
 use double_ratchet::DoubleRatchet;
 use double_ratchet_signal::signal::SignalCryptoProvider;
+use dpf::prg::Aes256HirosePrg;
+use dpf::{Dpf, DpfImpl};
+use group_math::int::U128Group;
 use prost::Message;
 use rand::prelude::*;
 // See the use
@@ -13,7 +17,7 @@ use crate::crypto;
 use crate::crypto::prelude::*;
 use crate::grpc::eems::eems_for_send_client::EemsForSendClient;
 use crate::grpc::eems::{Auth, GenIdReq, GenIdRes, GenIdSignedPack};
-use crate::grpc::user::{EeMsg, EeMsgHeader, Msg, MsgId};
+use crate::grpc::user::{EeMsg, EeMsgHeader, IdShare, IdShareCw, Msg, MsgId};
 
 pub struct Sender {
     id: Uuid,
@@ -131,5 +135,44 @@ impl Receiver {
         .encode_to_vec();
 
         crypto::pk_verify(&self.eems_pk, &signed_buf, sign)
+    }
+}
+
+pub struct Reporter {
+    dpf: DpfImpl<32, 16, Aes256HirosePrg<16, 1>>,
+}
+
+impl Reporter {
+    pub fn new(prg_key: &[u8; 32]) -> Self {
+        let prg = Aes256HirosePrg::new([prg_key]);
+        let dpf = DpfImpl::new(prg);
+        Self { dpf }
+    }
+
+    pub fn gen_id_shares(&self, id: &[u8], s0s: [&[u8; 16]; 2]) -> [IdShare; 2] {
+        let id_idx = crypto::hash(id);
+        let share = self.dpf.gen(
+            &CmpFn::<32, 16, U128Group> {
+                alpha: id_idx,
+                beta: U128Group(1),
+            },
+            s0s,
+        );
+        let share0 = IdShare {
+            s0: share.s0s[0].to_vec(),
+            cw_np1: share.cw_np1.0.to_le_bytes().to_vec(),
+            cws: share
+                .cws
+                .into_iter()
+                .map(|cw| IdShareCw {
+                    s: cw.s.to_vec(),
+                    tl: cw.tl,
+                    tr: cw.tr,
+                })
+                .collect(),
+        };
+        let mut share1 = share0.clone();
+        share1.s0 = share.s0s[1].to_vec();
+        [share0, share1]
     }
 }

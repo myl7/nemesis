@@ -1,3 +1,5 @@
+extern crate dpf_fss as dpf;
+
 pub mod crypto;
 pub mod db;
 pub mod eems;
