@@ -1,3 +1,9 @@
+use dcf::prg::Aes256HirosePrg as DcfAes256HirosePrg;
+use dcf::{Dcf, DcfImpl, Share};
+use dpf::prg::Aes256HirosePrg as DpfAes256HirosePrg;
+use dpf::{Dpf, DpfImpl};
+use group_math::int::U128Group;
+
 use crate::crypto;
 use crate::crypto::prelude::*;
 use crate::utils;
@@ -87,5 +93,78 @@ impl SymEncPerm {
 impl Perm for SymEncPerm {
     fn perm(&self, item: &mut Vec<u8>) {
         *item = crypto::sym_enc(&self.key, item);
+    }
+}
+
+pub struct MspModeration {
+    party: bool,
+    dcf: DcfImpl<16, 16, DcfAes256HirosePrg<16, 1>>,
+    dpf: DpfImpl<32, 16, DpfAes256HirosePrg<16, 1>>,
+    id_hashes: Vec<Digest>,
+}
+
+impl MspModeration {
+    pub fn new(
+        party: bool,
+        dcf_prg_key: &[u8; 32],
+        dpf_prg_key: &[u8; 32],
+        id_hashes: Vec<Digest>,
+    ) -> Self {
+        let dcf_prg = DcfAes256HirosePrg::new([dcf_prg_key]);
+        let dcf = DcfImpl::new(dcf_prg);
+        let dpf_prg = DpfAes256HirosePrg::new([dpf_prg_key]);
+        let dpf = DpfImpl::new(dpf_prg);
+        Self {
+            party,
+            dcf,
+            dpf,
+            id_hashes,
+        }
+    }
+
+    pub fn sum_report(&self, shares: &[Share<16, U128Group>], values: &mut [u128]) {
+        let mut buf = vec![U128Group(0); self.id_hashes.len()];
+        shares.iter().for_each(|share| {
+            self.dpf.eval(
+                self.party,
+                &share,
+                &self.id_hashes.iter().collect::<Vec<_>>(),
+                &mut buf.iter_mut().collect::<Vec<_>>(),
+            );
+            values.iter_mut().zip(buf.iter()).for_each(|(v, g)| {
+                *v += g.0;
+            });
+        });
+    }
+
+    pub fn check_threhold(
+        &self,
+        kappa_shares: &[Share<16, U128Group>],
+        gamma_shares: &[Share<16, U128Group>],
+        values: &mut [u128],
+    ) {
+        gamma_shares
+            .iter()
+            .zip(self.id_hashes.iter())
+            .zip(values.iter_mut())
+            .for_each(|((gamma_share, id_hash), value)| {
+                let mut buf = U128Group(0);
+                self.dpf
+                    .eval(self.party, &gamma_share, &[id_hash], &mut [&mut buf]);
+                *value += buf.0;
+            });
+        kappa_shares
+            .iter()
+            .zip(values.iter_mut())
+            .for_each(|(kappa_share, value)| {
+                let mut buf = U128Group(0);
+                self.dcf.eval(
+                    self.party,
+                    &kappa_share,
+                    &[&value.to_le_bytes()],
+                    &mut [&mut buf],
+                );
+                *value = buf.0;
+            });
     }
 }

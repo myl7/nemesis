@@ -661,6 +661,7 @@ version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8de0c6b76757e206ffc0e4bcc30ae46e9c6241cfaa0ccd3eb9b695a82226df2b"
 dependencies = [
+ "aes 0.8.3",
  "bitvec",
  "group-math",
  "rayon",
