@@ -140,18 +140,14 @@ impl MspModeration {
     pub fn check_threhold(
         &self,
         kappa_shares: &[Share<16, U128Group>],
-        gamma_shares: &[Share<16, U128Group>],
+        gamma_shares: &[u128],
         values: &mut [u128],
     ) {
         gamma_shares
             .iter()
-            .zip(self.id_hashes.iter())
             .zip(values.iter_mut())
-            .for_each(|((gamma_share, id_hash), value)| {
-                let mut buf = U128Group(0);
-                self.dpf
-                    .eval(self.party, &gamma_share, &[id_hash], &mut [&mut buf]);
-                *value += buf.0;
+            .for_each(|(&gamma_share, value)| {
+                *value = (*value).wrapping_add(gamma_share);
             });
         kappa_shares
             .iter()

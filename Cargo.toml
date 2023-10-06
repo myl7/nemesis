@@ -53,6 +53,7 @@ name = "gen_id_shares"
 harness = false
 
 [[bench]]
+bench = false
 name = "gen_id_shuffle"
 harness = false
 

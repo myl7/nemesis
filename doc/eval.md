@@ -65,6 +65,7 @@ Steps:
 
 - `gen_id_shares` raw log: [gen_id_shares.log](log/gen_id_shares.log)
 
+<!--
 ## Time of ID shuffle generation
 
 Including doing the shuffle to get the shuffled ID vector
@@ -74,3 +75,4 @@ Steps:
 1. Run `cargo bench --bench gen_id_shuffle` and get the result from the output
 
 - `gen_id_shuffle` raw log: [gen_id_shuffle.log](log/gen_id_shuffle.log)
+ -->
