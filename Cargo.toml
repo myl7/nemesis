@@ -57,6 +57,10 @@ bench = false
 name = "gen_id_shuffle"
 harness = false
 
+[[bench]]
+name = "update_msp"
+harness = false
+
 [build-dependencies]
 tonic-build = "0.10.0"
 

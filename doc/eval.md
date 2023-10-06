@@ -77,3 +77,11 @@ Steps:
 
 - `gen_id_shuffle` raw log: [gen_id_shuffle.log](log/gen_id_shuffle.log)
  -->
+
+## Time of MSP update
+
+Steps:
+
+1. Run `cargo bench --bench update_msp` and get the result from the output
+
+- `update_msp` raw log: [update_msp.log](log/update_msp.log)
