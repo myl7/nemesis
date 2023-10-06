@@ -41,13 +41,14 @@ Steps:
 
 ## Time of MSP ID shuffle
 
-Message number (Vector size): $10^4$ - $10^7$
+Message number (Vector size): $10^3$ - $10^8$
 
 Steps:
 
 1. Run `cargo bench --bench shuffle_id` and get the result from the output
 
 - `shuffle_id` raw log: [shuffle_id.log](log/shuffle_id.log)
+- `shuffle_id` raw log: [shuffle_id_a1.log](log/shuffle_id_a1.log)
 
 ## Communication payload for ID shares
 
