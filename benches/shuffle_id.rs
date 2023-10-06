@@ -17,7 +17,7 @@ fn gen_vec(item_num: usize) -> Vec<Vec<u8>> {
 }
 
 fn from_item_num(c: &mut Criterion) {
-    let item_num_iter = (3..7).into_iter().map(|x| 10usize.pow(x));
+    let item_num_iter = [1, 2, 5, 10, 12].into_iter().map(|x| x * 3600 * 11);
     item_num_iter.for_each(|item_num| {
         // TODO: Replace with the impl in `eems`
         let share1 = gen_vec(item_num);

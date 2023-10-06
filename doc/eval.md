@@ -41,7 +41,7 @@ Steps:
 
 ## Time of MSP ID shuffle
 
-Message number (Vector size): $10^3$ - $10^8$
+Message number (Vector size): `1, 2, 5, 10, 12 * 3600s * 11/s`
 
 Steps:
 
