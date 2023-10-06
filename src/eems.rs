@@ -9,6 +9,8 @@ use crate::crypto::prelude::*;
 use crate::db::{Db, IdArchive};
 use crate::grpc::eems::eems_for_send_server::EemsForSend;
 use crate::grpc::eems::{GenIdReq, GenIdRes, GenIdSignedPack};
+use crate::msp::{EemsVec, Perm, SymEncPerm};
+use crate::utils;
 
 pub struct EemsForSendImpl {
     sk: SK,
@@ -83,4 +85,63 @@ pub trait PubSrc: Sync + Send {
 
 pub struct PubInfo {
     pub pk: PK,
+}
+
+pub struct EemsIdShuffle<P: Perm> {
+    shared_perm: P,
+}
+
+impl<P> EemsIdShuffle<P>
+where
+    P: Perm,
+{
+    pub fn new(shared_perm: P) -> Self {
+        Self { shared_perm }
+    }
+
+    pub fn gen_shuffle_shares(
+        &self,
+        item_num: usize,
+        mut ids: Vec<Vec<u8>>,
+    ) -> ((EemsVec, EemsVec), Vec<Vec<u8>>) {
+        let a1 = gen_rand_id_vec(item_num);
+        let a2 = gen_rand_id_vec(item_num);
+        let a3 = gen_rand_id_vec(item_num);
+        let eems_perm_key1: SymK = rand::thread_rng().gen();
+        let eems_perm1 = SymEncPerm::new(eems_perm_key1);
+        let eems_perm_key2: SymK = rand::thread_rng().gen();
+        let eems_perm2 = SymEncPerm::new(eems_perm_key2);
+
+        let mut delta = a3.clone();
+        delta.iter_mut().enumerate().for_each(|(i, item)| {
+            eems_perm1.perm(item);
+            utils::bytes_add(item, &a1[i]);
+            eems_perm2.perm(item);
+            utils::bytes_minus(item, &a2[i]);
+        });
+
+        let shuffle_share1 = EemsVec::OneVec(a1);
+        let shuffle_share2 = EemsVec::ThreeVec(a2, a3, delta);
+
+        ids.iter_mut().for_each(|item| {
+            self.shared_perm.perm(item);
+        });
+        ids.iter_mut().for_each(|item| {
+            eems_perm1.perm(item);
+        });
+        ids.iter_mut().for_each(|item| {
+            eems_perm2.perm(item);
+        });
+
+        ((shuffle_share1, shuffle_share2), ids)
+    }
+}
+
+fn gen_rand_id_vec(item_num: usize) -> Vec<Vec<u8>> {
+    const ID_SIZE: usize = 164;
+    let mut share = vec![vec![0u8; ID_SIZE]; item_num];
+    share.iter_mut().for_each(|x| {
+        rand::thread_rng().fill_bytes(x);
+    });
+    share
 }
