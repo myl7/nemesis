@@ -93,3 +93,23 @@ Steps:
 1. Run `cargo bench --bench msp_compare` and get the result from the output
 
 - `msp_compare` raw log: [msp_compare.log](log/msp_compare.log)
+
+## msp_verify
+
+## Time of EEMS comparison information generation (DCF & gamma)
+
+Steps:
+
+1. Run `cargo bench --bench gen_compare` and get the result from the output
+
+- `gen_compare` raw log: [gen_compare.log](log/gen_compare.log)
+
+## eval-compare-size
+
+## seek_source
+
+## send
+
+## recv
+
+## report

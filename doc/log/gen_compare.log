@@ -1,0 +1,16 @@
+gen_compare/39600       time:   [905.96 ms 907.31 ms 908.44 ms]
+Found 1 outliers among 10 measurements (10.00%)
+  1 (10.00%) low mild
+
+gen_compare/79200       time:   [1.7947 s 1.7981 s 1.8020 s]
+Found 2 outliers among 10 measurements (20.00%)
+  2 (20.00%) high mild
+
+gen_compare/198000      time:   [4.4968 s 4.5205 s 4.5441 s]
+
+gen_compare/396000      time:   [9.8956 s 10.412 s 10.788 s]
+Found 2 outliers among 10 measurements (20.00%)
+  2 (20.00%) low severe
+
+gen_compare/475200      time:   [12.886 s 12.930 s 12.973 s]
+

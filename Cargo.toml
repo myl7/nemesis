@@ -65,6 +65,10 @@ harness = false
 name = "msp_compare"
 harness = false
 
+[[bench]]
+name = "gen_compare"
+harness = false
+
 [build-dependencies]
 tonic-build = "0.10.0"
 
