@@ -1,0 +1,18 @@
+msp_compare/39600       time:   [154.99 ms 155.43 ms 155.90 ms]
+Found 3 outliers among 100 measurements (3.00%)
+  2 (2.00%) high mild
+  1 (1.00%) high severe
+
+msp_compare/79200       time:   [301.83 ms 303.01 ms 304.18 ms]
+Found 2 outliers among 100 measurements (2.00%)
+  2 (2.00%) high mild
+
+msp_compare/198000      time:   [755.13 ms 760.06 ms 765.13 ms]
+
+msp_compare/396000      time:   [1.5176 s 1.5244 s 1.5313 s]
+
+msp_compare/475200      time:   [1.8392 s 1.8406 s 1.8421 s]
+Found 8 outliers among 100 measurements (8.00%)
+  1 (1.00%) high mild
+  7 (7.00%) high severe
+

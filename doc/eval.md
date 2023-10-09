@@ -85,3 +85,11 @@ Steps:
 1. Run `cargo bench --bench update_msp` and get the result from the output
 
 - `update_msp` raw log: [update_msp.log](log/update_msp.log)
+
+## Time of MSP comparison
+
+Steps:
+
+1. Run `cargo bench --bench msp_compare` and get the result from the output
+
+- `msp_compare` raw log: [msp_compare.log](log/msp_compare.log)
