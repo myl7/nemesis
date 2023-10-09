@@ -1,7 +1,6 @@
 use criterion::{black_box, criterion_group, criterion_main, BenchmarkId, Criterion};
 use dcf::{Cw, Share};
 use group_math::int::U128Group;
-use group_math::Group;
 use rand::prelude::*;
 
 use eemod::grpc::user::{IdShare, IdShareCw};
@@ -24,15 +23,15 @@ fn from_item_num(c: &mut Criterion) {
         let IdShare { s0, cw_np1, cws } = if party { share0 } else { share1 };
         Share {
             s0s: vec![s0.try_into().unwrap()],
-            cw_np1: U128Group::convert(TryInto::<[u8; 16]>::try_into(cw_np1).unwrap()),
+            cw_np1: TryInto::<[u8; 16]>::try_into(cw_np1).unwrap().into(),
             cws: cws
                 .into_iter()
                 .map(|cw| {
                     let IdShareCw { s, tl, tr } = cw;
-                    let v = U128Group::convert([0; 16]);
                     Cw {
                         s: s.try_into().unwrap(),
-                        v,
+                        // TODO: Fix type inference for LAMBDA
+                        v: U128Group(0),
                         tl,
                         tr,
                     }

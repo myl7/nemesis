@@ -657,9 +657,9 @@ dependencies = [
 
 [[package]]
 name = "dcf"
-version = "0.3.0"
+version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8de0c6b76757e206ffc0e4bcc30ae46e9c6241cfaa0ccd3eb9b695a82226df2b"
+checksum = "9c4419b7e933aec1b26f3ff914ba7abf939bb6f295515673bc6beb879a9c4610"
 dependencies = [
  "aes 0.8.3",
  "bitvec",
@@ -727,9 +727,9 @@ dependencies = [
 
 [[package]]
 name = "dpf-fss"
-version = "0.1.0"
+version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f68ba5c659aa7a67413eb3ac4fcb54f0fa4e8e69a875cd2537aa4abc359f13dd"
+checksum = "2446dce212c0cc86bef939c415e60c75a65fca6dee0519c7a8a212c1cab2a884"
 dependencies = [
  "aes 0.8.3",
  "bitvec",
@@ -1010,9 +1010,9 @@ dependencies = [
 
 [[package]]
 name = "group-math"
-version = "0.1.0"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c1b3e4848c3be166d3cc9d4ab23575be280e26aaa29db8b38a9343862e3f073e"
+checksum = "62dbb76b31611063c9d4e7770d9b0a0a8c08be7bbd2dd46dbc626c9e0d9eb90c"
 
 [[package]]
 name = "h2"
