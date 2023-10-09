@@ -104,7 +104,13 @@ Steps:
 
 - `gen_compare` raw log: [gen_compare.log](log/gen_compare.log)
 
-## eval-compare-size
+## Payload size of EEMS comparison information (DCF & gamma)
+
+5143B for every item
+
+Steps:
+
+1. Run `cargo run --bin eval-compare-size` and get the result from the output
 
 ## seek_source
 

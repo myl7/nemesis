@@ -37,3 +37,16 @@ message IdShareCw {
   bool tl = 2;
   bool tr = 3;
 }
+
+message KappaShare {
+  bytes s0 = 1;
+  repeated KappaShareCw cws = 2;
+  bytes cw_np1 = 3;
+}
+
+message KappaShareCw {
+  bytes s = 1;
+  bool tl = 2;
+  bool tr = 3;
+  bytes v = 4;
+}
