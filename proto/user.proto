@@ -26,6 +26,12 @@ message EeMsgHeader {
   uint32 pn = 2;
 }
 
+message IdShareWithMac {
+  IdShare share = 1;
+  bytes mac_gamma = 2;
+  bytes mac_tao = 3;
+}
+
 message IdShare {
   bytes s0 = 1;
   repeated IdShareCw cws = 2;

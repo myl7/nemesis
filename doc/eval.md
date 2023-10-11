@@ -54,6 +54,11 @@ Steps:
 
 For 2 shares in total: 11312 B
 
+The MAC is 2 \* 28 B.
+Since we use `BigUint` to use integer addition as the plus operation, the MAC size can differ with at most 1 B, which should be fine to ignore.
+
+Including the MAC: 11482 B
+
 Steps:
 
 1. Run `eval-id-share-size` and get the result from the output
@@ -93,6 +98,14 @@ Steps:
 1. Run `cargo bench --bench msp_compare` and get the result from the output
 
 - `msp_compare` raw log: [msp_compare.log](log/msp_compare.log)
+
+## Time of reporter MAC generation
+
+Steps:
+
+1. Run `cargo bench --bench gen_mac` and get the result from the output
+
+- `gen_mac` raw log: [gen_mac.log](log/gen_mac.log)
 
 ## msp_verify
 

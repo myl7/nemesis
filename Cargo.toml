@@ -69,6 +69,10 @@ harness = false
 name = "gen_compare"
 harness = false
 
+[[bench]]
+name = "gen_mac"
+harness = false
+
 [build-dependencies]
 tonic-build = "0.10.0"
 

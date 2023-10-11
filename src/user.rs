@@ -5,6 +5,7 @@ use double_ratchet_signal::signal::SignalCryptoProvider;
 use dpf::prg::Aes256HirosePrg;
 use dpf::{Dpf, DpfImpl};
 use group_math::int::U128Group;
+use num_bigint::BigUint;
 use prost::Message;
 use rand::prelude::*;
 // See the use
@@ -174,5 +175,26 @@ impl Reporter {
         let mut share1 = share0.clone();
         share1.s0 = share.s0s[1].to_vec();
         [share0, share1]
+    }
+}
+
+pub struct ReporterGenMac;
+
+impl ReporterGenMac {
+    pub fn new() -> Self {
+        Self {}
+    }
+
+    pub fn gen(&self, mk: &SymK) -> (Vec<u8>, Vec<u8>, Vec<u8>) {
+        let mk_int = BigUint::from_bytes_le(mk);
+        let gamma: SymK = thread_rng().gen();
+        let mut gamma_int = BigUint::from_bytes_le(&gamma);
+        let tao0: SymK = thread_rng().gen();
+        let tao0_int = BigUint::from_bytes_le(&tao0);
+        gamma_int += &tao0_int;
+        let tao_int = mk_int + gamma_int;
+        let tao1_int = tao_int - tao0_int;
+        let tao1 = tao1_int.to_bytes_le();
+        (gamma.to_vec(), tao0.to_vec(), tao1)
     }
 }
