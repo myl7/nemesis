@@ -1,0 +1,30 @@
+verify_mac/39600        time:   [1.8958 ms 1.9060 ms 1.9203 ms]
+                        change: [-91.836% -91.664% -91.456%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 4 outliers among 100 measurements (4.00%)
+  4 (4.00%) high severe
+
+verify_mac/79200        time:   [4.1353 ms 4.1489 ms 4.1667 ms]
+                        change: [-82.359% -82.270% -82.177%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 5 outliers among 100 measurements (5.00%)
+  4 (4.00%) high mild
+  1 (1.00%) high severe
+
+verify_mac/198000       time:   [10.418 ms 10.456 ms 10.496 ms]
+                        change: [-57.890% -57.697% -57.495%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 2 outliers among 100 measurements (2.00%)
+  2 (2.00%) high mild
+
+verify_mac/396000       time:   [20.985 ms 21.098 ms 21.226 ms]
+                        change: [-17.867% -17.287% -16.696%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 6 outliers among 100 measurements (6.00%)
+  4 (4.00%) high mild
+  2 (2.00%) high severe
+
+verify_mac/475200       time:   [25.773 ms 25.832 ms 25.894 ms]
+                        change: [+1.5819% +2.1672% +2.7288%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+

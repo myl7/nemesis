@@ -107,7 +107,13 @@ Steps:
 
 - `gen_mac` raw log: [gen_mac.log](log/gen_mac.log)
 
-## msp_verify
+## Time of MSP verify MAC
+
+Steps:
+
+1. Run `cargo bench --bench verify_mac` and get the result from the output
+
+- `verify_mac` raw log: [verify_mac.log](log/verify_mac.log)
 
 ## Time of EEMS comparison information generation (DCF & gamma)
 
