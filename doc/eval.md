@@ -48,7 +48,6 @@ Steps:
 1. Run `cargo bench --bench shuffle_id` and get the result from the output
 
 - `shuffle_id` raw log: [shuffle_id.log](log/shuffle_id.log)
-- `shuffle_id` raw log: [shuffle_id_a1.log](log/shuffle_id_a1.log)
 
 ## Communication payload for ID shares
 
@@ -145,4 +144,4 @@ Steps:
 2. Run `eval-eems-for-send`
 3. Run `cargo bench --bench gen_recv_msg` and get the result from the output
 
-## report
+`gen_recv_msg` raw log: [gen_recv_msg.log](log/gen_recv_msg.log)
