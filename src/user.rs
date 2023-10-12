@@ -1,7 +1,7 @@
 use anyhow::Result;
 use dcf::CmpFn;
-use double_ratchet::DoubleRatchet;
-use double_ratchet_signal::signal::SignalCryptoProvider;
+use double_ratchet::{DoubleRatchet, Header};
+use double_ratchet_signal::signal::{KeyPair, SignalCryptoProvider};
 use dpf::prg::Aes256HirosePrg;
 use dpf::{Dpf, DpfImpl};
 use group_math::int::U128Group;
@@ -99,6 +99,7 @@ impl Sender {
             header: Some(EeMsgHeader {
                 n: msg_header.n,
                 pn: msg_header.pn,
+                dh: msg_header.dh.as_ref().to_vec(),
             }),
             ct: msg_ct,
         };
@@ -109,11 +110,23 @@ impl Sender {
 
 pub struct Receiver {
     eems_pk: PK,
+    // For compatibility with previous benchmarks
+    #[allow(dead_code)]
+    sk: Option<SK>,
 }
 
 impl Receiver {
     pub fn new(eems_pk: PK) -> Self {
-        Self { eems_pk }
+        Self { eems_pk, sk: None }
+    }
+
+    // The Signal Provider does not export the private key as bytes.
+    // No time to modify that so just provide the private key as an argument.
+    pub fn new_with_sk(eems_pk: PK, sk: SK) -> Self {
+        Self {
+            eems_pk,
+            sk: Some(sk),
+        }
     }
 
     pub fn verify_msg(&self, body: &[u8], msg_id: &MsgId) -> Result<(), ()> {
@@ -136,6 +149,42 @@ impl Receiver {
         .encode_to_vec();
 
         crypto::pk_verify(&self.eems_pk, &signed_buf, sign)
+    }
+
+    pub async fn recv_msg(
+        &self,
+        eemsg: EeMsg,
+        shared_secret: [u8; 32],
+        _alice_pk: [u8; 32],
+        asso_data: &[u8],
+        kp: KeyPair,
+    ) -> Result<Vec<u8>, ()> {
+        let EeMsg {
+            header: header_opt,
+            ct,
+        } = eemsg;
+        let EeMsgHeader { n, pn, dh } = header_opt.unwrap();
+        let dh_pk: PK = dh.try_into().unwrap();
+        let mut bob =
+            DoubleRatchet::<SignalCryptoProvider>::new_bob(shared_secret.into(), kp, None);
+        let msg_buf = bob
+            .ratchet_decrypt(
+                &Header {
+                    dh: dh_pk.into(),
+                    n,
+                    pn,
+                },
+                &ct,
+                asso_data,
+            )
+            .unwrap();
+
+        let Msg { id_bs, body } = Msg::decode(msg_buf.as_ref()).unwrap();
+        let msg_id = MsgId::decode(id_bs.as_ref()).unwrap();
+
+        self.verify_msg(&body, &msg_id)?;
+
+        Ok(body)
     }
 }
 

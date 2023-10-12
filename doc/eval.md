@@ -139,8 +139,10 @@ Steps:
 
 `seek_source` raw log: [seek_source.log](log/seek_source.log)
 
-## send
+## Total time of send and recv
 
-## recv
+1. Run `eval-gen-pk-sk` and follow the output to set envs for the sender and EEMS. Additionally set envs for the receiver.
+2. Run `eval-eems-for-send`
+3. Run `cargo bench --bench gen_recv_msg` and get the result from the output
 
 ## report

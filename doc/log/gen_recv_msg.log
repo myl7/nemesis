@@ -1,0 +1,10 @@
+gen_msg                 time:   [1.0077 ms 1.0111 ms 1.0140 ms]
+                        change: [-0.5611% +0.0204% +0.5665%] (p = 0.95 > 0.05)
+                        No change in performance detected.
+
+recv_msg                time:   [101.05 µs 101.14 µs 101.24 µs]
+                        change: [-2.0229% -1.3236% -0.7874%] (p = 0.00 < 0.05)
+                        Change within noise threshold.
+Found 1 outliers among 10 measurements (10.00%)
+  1 (10.00%) high mild
+

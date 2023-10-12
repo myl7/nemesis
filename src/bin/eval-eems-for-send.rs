@@ -26,7 +26,7 @@ async fn main() {
 
     let eems = EemsForSendImpl::new(sk, pub_src, db);
 
-    let addr = "127.0.0.1:8000";
+    let addr = "0.0.0.0:8000";
     println!("To listen on {addr}");
     Server::builder()
         .add_service(EemsForSendServer::new(eems))

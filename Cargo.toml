@@ -17,7 +17,7 @@ anyhow = "1.0.75"
 async-trait = "0.1.73"
 dcf = { version = "0.5.0", features = ["prg"] }
 double-ratchet = "0.1.0"
-double-ratchet-signal = { git = "https://github.com/myl7/double-ratchet-signal.git", version = "0.1.2" }
+double-ratchet-signal = { path = "../double-ratchet-signal/double-ratchet-signal", version = "0.1.3" }
 dpf-fss = { version = "0.5.0", features = ["prg"] }
 group-math = { version = "0.2.1", features = ["int"] }
 hex = "0.4.3"
@@ -79,6 +79,10 @@ harness = false
 
 [[bench]]
 name = "seek_source"
+harness = false
+
+[[bench]]
+name = "gen_recv_msg"
 harness = false
 
 [build-dependencies]
