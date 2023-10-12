@@ -9,6 +9,7 @@ use crate::crypto::prelude::*;
 use crate::db::{Db, IdArchive};
 use crate::grpc::eems::eems_for_send_server::EemsForSend;
 use crate::grpc::eems::{GenIdReq, GenIdRes, GenIdSignedPack};
+use crate::grpc::user::MsgId;
 use crate::msp::{EemsVec, Perm, SymEncPerm};
 use crate::utils;
 
@@ -144,4 +145,45 @@ fn gen_rand_id_vec(item_num: usize) -> Vec<Vec<u8>> {
         rand::thread_rng().fill_bytes(x);
     });
     share
+}
+
+pub struct EemsSource {
+    pk: PK,
+    db: Db,
+}
+
+impl EemsSource {
+    pub fn new(pk: PK, db: Db) -> Self {
+        Self { pk, db }
+    }
+
+    pub fn seek_source(&self, id: &MsgId) -> Result<(Vec<u8>, Uuid), ()> {
+        let MsgId {
+            msg_key: msg_key_ref,
+            src_ct,
+            ct_hash,
+            sign,
+        } = id;
+        let msg_key: SymK = msg_key_ref.clone().try_into().unwrap();
+
+        let ct_hash_ct = crypto::sym_enc(&msg_key, ct_hash);
+        let signed_buf = GenIdSignedPack {
+            src_ct: src_ct.clone(),
+            ct_hash: ct_hash.clone(),
+            ct_hash_ct,
+        }
+        .encode_to_vec();
+        crypto::pk_verify(&self.pk, &signed_buf, &sign.clone().try_into().unwrap())?;
+
+        let IdArchive { id_key, ct } = self
+            .db
+            .get_id_archive_sync(&ct_hash.clone().try_into().unwrap())
+            .unwrap();
+        let pt = crypto::sym_dec(&msg_key, &ct).unwrap();
+
+        let src_buf = crypto::sym_dec(&id_key, &src_ct).unwrap();
+        let src = Uuid::from_bytes_ref(&src_buf.try_into().unwrap()).clone();
+
+        Ok((pt, src))
+    }
 }

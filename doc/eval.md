@@ -131,7 +131,13 @@ Steps:
 
 1. Run `cargo run --bin eval-compare-size` and get the result from the output
 
-## seek_source
+## Time of EEMS sourcing
+
+Steps:
+
+1. Run `cargo bench --bench seek_source` and get the result from the output
+
+`seek_source` raw log: [seek_source.log](log/seek_source.log)
 
 ## send
 

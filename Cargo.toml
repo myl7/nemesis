@@ -77,6 +77,10 @@ harness = false
 name = "verify_mac"
 harness = false
 
+[[bench]]
+name = "seek_source"
+harness = false
+
 [build-dependencies]
 tonic-build = "0.10.0"
 

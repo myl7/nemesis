@@ -33,6 +33,23 @@ impl Db {
         .unwrap()
     }
 
+    pub fn get_id_archive_sync(&self, ct_hash: &Digest) -> Option<IdArchive> {
+        let ct_hash = ct_hash.clone();
+        let db_arc = self.inner.clone();
+
+        let db = db_arc.lock().unwrap();
+        let id_key = db
+            .get([b"id_archive/id_key/".as_ref(), &ct_hash].concat())
+            .unwrap()?;
+        let ct = db
+            .get([b"id_archive/ct/".as_ref(), &ct_hash].concat())
+            .unwrap()?;
+        Some(IdArchive {
+            id_key: id_key.try_into().unwrap(),
+            ct,
+        })
+    }
+
     pub async fn put_id_archive(&self, ct_hash: &Digest, id_ar: IdArchive) {
         let ct_hash = ct_hash.clone();
         let db_arc = self.inner.clone();
@@ -48,6 +65,20 @@ impl Db {
         })
         .await
         .unwrap()
+    }
+
+    pub fn put_id_archive_sync(&self, ct_hash: &Digest, id_ar: IdArchive) {
+        let ct_hash = ct_hash.clone();
+        let db_arc = self.inner.clone();
+
+        let db = db_arc.lock().unwrap();
+        db.put(
+            [b"id_archive/id_key/".as_ref(), &ct_hash].concat(),
+            id_ar.id_key,
+        )
+        .unwrap();
+        db.put([b"id_archive/ct/".as_ref(), &ct_hash].concat(), id_ar.ct)
+            .unwrap();
     }
 }
 
