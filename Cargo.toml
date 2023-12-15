@@ -21,13 +21,14 @@ double-ratchet-signal = { git = "https://github.com/myl7/double-ratchet-signal.g
 dpf-fss = { version = "0.5.0", features = ["prg"] }
 group-math = { version = "0.2.1", features = ["int"] }
 hex = "0.4.3"
+md-5 = "0.10.6"
 num-bigint = "0.4.4"
 prost = "0.12.1"
 rand = { version = "0.8.5", features = ["std", "std_rng"] }
 rand_os = "0.1"
 ring-compat = "0.7.0"
 rocksdb = { version = "0.21.0", default-features = false }
-sha2 = "0.10.7"
+# sha2 = "0.10.7"
 tokio = { version = "1.32.0", features = ["rt", "rt-multi-thread", "macros"] }
 tonic = "0.10.0"
 uuid = "1.4.1"

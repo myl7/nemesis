@@ -12,13 +12,16 @@ pub mod prelude {
 
 pub use hash::hash;
 pub mod hash {
-    use sha2::Sha256;
+    // use sha2::Sha256;
+    use md5::Md5;
 
-    pub type Digest = [u8; 32];
+    pub type Digest = [u8; 16];
 
+    // Previously we use SHA256 for 32 bytes.
+    // Now we use MD5 for 16 bytes.
     pub fn hash(data: &[u8]) -> Digest {
-        use sha2::Digest;
-        let mut hasher = Sha256::new();
+        use md5::Digest;
+        let mut hasher = Md5::new();
         hasher.update(data);
         hasher.finalize().into()
     }

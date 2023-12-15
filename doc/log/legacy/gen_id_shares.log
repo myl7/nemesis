@@ -1,0 +1,7 @@
+gen_id_shares           time:   [33.070 µs 33.075 µs 33.081 µs]
+                        change: [-41.583% -41.227% -40.893%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 7 outliers among 100 measurements (7.00%)
+  3 (3.00%) high mild
+  4 (4.00%) high severe
+

@@ -99,7 +99,7 @@ impl Perm for SymEncPerm {
 pub struct MspModeration {
     party: bool,
     dcf: DcfImpl<16, 16, DcfAes256HirosePrg<16, 1>>,
-    dpf: DpfImpl<32, 16, DpfAes256HirosePrg<16, 1>>,
+    dpf: DpfImpl<16, 16, DpfAes256HirosePrg<16, 1>>,
     id_hashes: Vec<Digest>,
 }
 

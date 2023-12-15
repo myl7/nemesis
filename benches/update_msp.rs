@@ -42,7 +42,7 @@ fn from_item_num(c: &mut Criterion) {
 
     let dpf_prg_key: [u8; 32] = thread_rng().gen();
     let dcf_prg_key: [u8; 32] = thread_rng().gen();
-    let mut id_hashes = vec![[0u8; 32]; max_item_num];
+    let mut id_hashes = vec![[0u8; 16]; max_item_num];
     id_hashes.iter_mut().for_each(|x| {
         rand::thread_rng().fill_bytes(x);
     });

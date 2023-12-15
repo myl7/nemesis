@@ -189,7 +189,7 @@ impl Receiver {
 }
 
 pub struct Reporter {
-    dpf: DpfImpl<32, 16, Aes256HirosePrg<16, 1>>,
+    dpf: DpfImpl<16, 16, Aes256HirosePrg<16, 1>>,
 }
 
 impl Reporter {
@@ -202,7 +202,7 @@ impl Reporter {
     pub fn gen_id_shares(&self, id: &[u8], s0s: [&[u8; 16]; 2]) -> [IdShare; 2] {
         let id_idx = crypto::hash(id);
         let share = self.dpf.gen(
-            &CmpFn::<32, 16, U128Group> {
+            &CmpFn::<16, 16, U128Group> {
                 alpha: id_idx,
                 beta: U128Group(1),
             },
