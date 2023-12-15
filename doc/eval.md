@@ -51,7 +51,8 @@ Steps:
 
 ## Communication payload for ID shares
 
-For 2 shares in total: 11312 B
+<!-- For 2 shares in total: 11312 B -->
+For 2 shares in total: 5858 B
 
 The MAC is 2 \* 28 B.
 Since we use `BigUint` to use integer addition as the plus operation, the MAC size can differ with at most 1 B, which should be fine to ignore.
