@@ -13,7 +13,7 @@ fn from_item_num(c: &mut Criterion) {
         beta: U128Group(1),
     };
 
-    let item_num_iter = [1, 2, 5, 10, 12].into_iter().map(|x| x * 3600 * 11);
+    let item_num_iter = [4, 5, 6, 7, 8].into_iter().map(|x| 10usize.pow(x));
     item_num_iter.for_each(|item_num| {
         c.bench_with_input(
             BenchmarkId::new("gen_compare", item_num),

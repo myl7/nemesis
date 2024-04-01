@@ -5,7 +5,7 @@ use rand::prelude::*;
 use eemod::crypto::prelude::*;
 
 fn from_item_num(c: &mut Criterion) {
-    let item_num_iter = [1, 2, 5, 10, 12].into_iter().map(|x| x * 3600 * 11);
+    let item_num_iter = [4, 5, 6, 7, 8].into_iter().map(|x| 10usize.pow(x));
     let max_item_num = item_num_iter.clone().last().unwrap();
 
     // In the previous procedure we have evaluated the DCF, so now we just have a bunch of values to be summed up
@@ -45,5 +45,9 @@ fn from_item_num(c: &mut Criterion) {
     });
 }
 
-criterion_group!(benches, from_item_num);
+criterion_group! {
+    name = benches;
+    config = Criterion::default().sample_size(10);
+    targets = from_item_num
+}
 criterion_main!(benches);

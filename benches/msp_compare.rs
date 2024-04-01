@@ -7,7 +7,7 @@ use rand::prelude::*;
 use eemod::msp::MspModeration;
 
 fn from_item_num(c: &mut Criterion) {
-    let item_num_iter = [1, 2, 5, 10, 12].into_iter().map(|x| x * 3600 * 11);
+    let item_num_iter = [4, 5, 6, 7, 8].into_iter().map(|x| 10usize.pow(x));
     let max_item_num = item_num_iter.clone().last().unwrap();
 
     let party = true;
