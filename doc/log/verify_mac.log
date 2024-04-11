@@ -1,0 +1,16 @@
+verify_mac/10000        time:   [507.75 µs 507.97 µs 508.13 µs]
+Found 1 outliers among 10 measurements (10.00%)
+  1 (10.00%) high severe
+
+verify_mac/100000       time:   [5.3980 ms 5.4350 ms 5.4624 ms]
+
+verify_mac/1000000      time:   [54.179 ms 54.338 ms 54.510 ms]
+Found 1 outliers among 10 measurements (10.00%)
+  1 (10.00%) high mild
+
+verify_mac/10000000     time:   [526.67 ms 527.24 ms 527.88 ms]
+Found 1 outliers among 10 measurements (10.00%)
+  1 (10.00%) high mild
+
+verify_mac/100000000    time:   [5.2267 s 5.2290 s 5.2313 s]
+

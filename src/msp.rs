@@ -98,7 +98,7 @@ impl Perm for SymEncPerm {
 
 pub struct MspModeration {
     party: bool,
-    dcf: DcfImpl<16, 16, DcfAes256HirosePrg<16, 1>>,
+    dcf: DcfImpl<16, 16, DcfAes256HirosePrg<16, 2>>,
     dpf: DpfImpl<16, 16, DpfAes256HirosePrg<16, 1>>,
     id_hashes: Vec<Digest>,
 }
@@ -106,11 +106,11 @@ pub struct MspModeration {
 impl MspModeration {
     pub fn new(
         party: bool,
-        dcf_prg_key: &[u8; 32],
+        dcf_prg_keys: [&[u8; 32]; 2],
         dpf_prg_key: &[u8; 32],
         id_hashes: Vec<Digest>,
     ) -> Self {
-        let dcf_prg = DcfAes256HirosePrg::new([dcf_prg_key]);
+        let dcf_prg = DcfAes256HirosePrg::new(dcf_prg_keys);
         let dcf = DcfImpl::new(dcf_prg);
         let dpf_prg = DpfAes256HirosePrg::new([dpf_prg_key]);
         let dpf = DpfImpl::new(dpf_prg);

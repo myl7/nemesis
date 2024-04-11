@@ -1,0 +1,6 @@
+gen_compare/10000       time:   [1632.3 s 1636.1 s 1641.5 s]
+                        change: [+10864% +10909% +10962%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 1 outliers among 10 measurements (10.00%)
+  1 (10.00%) high severe
+

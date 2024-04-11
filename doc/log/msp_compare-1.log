@@ -1,0 +1,32 @@
+# Recovered from the console log
+Benchmarking msp_compare/10000
+Benchmarking msp_compare/10000: Warming up for 3.0000 s
+Benchmarking msp_compare/10000: Collecting 10 samples in estimated 5.4754 s (110 iterations)
+Benchmarking msp_compare/10000: Analyzing
+msp_compare/10000       time:   [49.653 ms 49.938 ms 50.203 ms]
+                        change: [+23.356% +24.372% +25.428%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 2 outliers among 10 measurements (20.00%)
+  2 (20.00%) high mild
+
+Benchmarking msp_compare/100000
+Benchmarking msp_compare/100000: Warming up for 3.0000 s
+
+Warning: Unable to complete 10 samples in 5.0s. You may wish to increase target time to 5.0s.
+Benchmarking msp_compare/100000: Collecting 10 samples in estimated 5.0485 s (10 iterations)
+Benchmarking msp_compare/100000: Analyzing
+msp_compare/100000      time:   [498.97 ms 499.98 ms 501.08 ms]
+                        change: [-98.762% -98.755% -98.747%] (p = 0.00 < 0.05)
+                        Performance has improved.
+
+Benchmarking msp_compare/1000000
+Benchmarking msp_compare/1000000: Warming up for 3.0000 s
+
+Warning: Unable to complete 10 samples in 5.0s. You may wish to increase target time to 47.9s.
+Benchmarking msp_compare/1000000: Collecting 10 samples in estimated 47.853 s (10 iterations)
+Benchmarking msp_compare/1000000: Analyzing
+msp_compare/1000000     time:   [4.9135 s 4.9841 s 5.0494 s]
+                        change: [-98.802% -98.780% -98.760%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 1 outliers among 10 measurements (10.00%)
+  1 (10.00%) low mild

@@ -1,27 +1,12 @@
-update_msp/39600        time:   [17.247 ms 17.353 ms 17.469 ms]
-Found 10 outliers among 100 measurements (10.00%)
-  1 (1.00%) low severe
-  1 (1.00%) low mild
-  2 (2.00%) high mild
-  6 (6.00%) high severe
+update_msp/10000        time:   [4.5533 ms 4.6138 ms 4.7034 ms]
+Found 2 outliers among 10 measurements (20.00%)
+  2 (20.00%) low mild
 
-update_msp/79200        time:   [37.218 ms 37.689 ms 38.199 ms]
-Found 3 outliers among 100 measurements (3.00%)
-  2 (2.00%) high mild
-  1 (1.00%) high severe
+update_msp/100000       time:   [46.298 ms 46.697 ms 47.474 ms]
 
-update_msp/198000       time:   [91.088 ms 91.854 ms 92.705 ms]
-Found 10 outliers among 100 measurements (10.00%)
-  8 (8.00%) high mild
-  2 (2.00%) high severe
+update_msp/1000000      time:   [447.19 ms 450.56 ms 454.26 ms]
 
-update_msp/396000       time:   [181.69 ms 183.13 ms 184.67 ms]
-Found 10 outliers among 100 measurements (10.00%)
-  9 (9.00%) high mild
-  1 (1.00%) high severe
-
-update_msp/475200       time:   [213.23 ms 214.10 ms 215.11 ms]
-Found 7 outliers among 100 measurements (7.00%)
-  3 (3.00%) high mild
-  4 (4.00%) high severe
+update_msp/10000000     time:   [4.5287 s 4.5378 s 4.5494 s]
+Found 1 outliers among 10 measurements (10.00%)
+  1 (10.00%) high mild
 

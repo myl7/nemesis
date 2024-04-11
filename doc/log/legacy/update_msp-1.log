@@ -1,0 +1,29 @@
+update_msp/39600        time:   [37.134 ms 37.479 ms 37.826 ms]
+                        change: [-71.065% -70.719% -70.378%] (p = 0.00 < 0.05)
+                        Performance has improved.
+
+update_msp/79200        time:   [74.187 ms 75.044 ms 76.037 ms]
+                        change: [-71.429% -71.047% -70.655%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 2 outliers among 100 measurements (2.00%)
+  1 (1.00%) high mild
+  1 (1.00%) high severe
+
+update_msp/198000       time:   [184.14 ms 185.77 ms 187.50 ms]
+                        change: [-71.962% -71.661% -71.378%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 4 outliers among 100 measurements (4.00%)
+  4 (4.00%) high mild
+
+update_msp/396000       time:   [360.94 ms 362.44 ms 364.04 ms]
+                        change: [-71.440% -71.318% -71.191%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 4 outliers among 100 measurements (4.00%)
+  4 (4.00%) high mild
+
+update_msp/475200       time:   [426.65 ms 427.76 ms 428.91 ms]
+                        change: [-72.248% -72.170% -72.084%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 4 outliers among 100 measurements (4.00%)
+  4 (4.00%) high mild
+

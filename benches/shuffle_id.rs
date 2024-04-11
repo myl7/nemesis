@@ -17,7 +17,8 @@ fn gen_vec(item_num: usize) -> Vec<Vec<u8>> {
 }
 
 fn from_item_num(c: &mut Criterion) {
-    let item_num_iter = [4, 5, 6, 7, 8].into_iter().map(|x| 10usize.pow(x));
+    // await 8
+    let item_num_iter = [6].into_iter().map(|x| 10usize.pow(x));
     item_num_iter.for_each(|item_num| {
         // TODO: Replace with the impl in `eems`
         let share1 = gen_vec(item_num);
@@ -55,9 +56,11 @@ fn from_item_num(c: &mut Criterion) {
             |b, _| {
                 b.iter(|| {
                     black_box({
-                        let mut shuffle = shuffle2.clone();
-                        shuffle.run_msp_perm();
-                        shuffle.gen_shared_share(None)
+                        for _ in 0..10 {
+                            let mut shuffle = shuffle2.clone();
+                            shuffle.run_msp_perm();
+                            shuffle.gen_shared_share(None);
+                        }
                     })
                 });
             },
@@ -72,9 +75,11 @@ fn from_item_num(c: &mut Criterion) {
             |b, _| {
                 b.iter(|| {
                     black_box({
-                        let mut shuffle = shuffle1.clone();
-                        shuffle.run_msp_perm();
-                        shuffle.gen_shared_share(Some(&z2))
+                        for _ in 0..10 {
+                            let mut shuffle = shuffle1.clone();
+                            shuffle.run_msp_perm();
+                            shuffle.gen_shared_share(Some(&z2));
+                        }
                     })
                 });
             },
@@ -89,8 +94,10 @@ fn from_item_num(c: &mut Criterion) {
             |b, _| {
                 b.iter(|| {
                     black_box({
-                        let shuffle = shuffle2.clone();
-                        shuffle.gen_shared_share(Some(&z1))
+                        for _ in 0..10 {
+                            let shuffle = shuffle2.clone();
+                            shuffle.gen_shared_share(Some(&z1));
+                        }
                     })
                 });
             },

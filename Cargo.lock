@@ -646,9 +646,9 @@ dependencies = [
 
 [[package]]
 name = "dcf"
-version = "0.5.0"
+version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9c4419b7e933aec1b26f3ff914ba7abf939bb6f295515673bc6beb879a9c4610"
+checksum = "36055bf4d6c6e134b23f3e4b65e74c805edf01933aa66f5b7fbe6f355395b6e7"
 dependencies = [
  "aes 0.8.4",
  "bitvec",

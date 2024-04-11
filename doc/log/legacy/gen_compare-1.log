@@ -1,0 +1,10 @@
+gen_compare/10000       time:   [108.38 ms 109.31 ms 109.93 ms]
+                        change: [-8.0100% -6.4601% -4.9900%] (p = 0.00 < 0.05)
+                        Performance has improved.
+
+gen_compare/100000      time:   [1.1094 s 1.1224 s 1.1362 s]
+                        change: [+0.7107% +2.3077% +4.0408%] (p = 0.02 < 0.05)
+                        Change within noise threshold.
+
+gen_compare/1000000     time:   [11.202 s 11.597 s 11.987 s]
+

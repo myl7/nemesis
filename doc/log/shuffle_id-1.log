@@ -1,0 +1,50 @@
+shuffle_id_gen_z2_by_party2/10000
+                        time:   [7.5987 ms 7.6159 ms 7.6315 ms]
+Found 1 outliers among 10 measurements (10.00%)
+  1 (10.00%) high severe
+
+shuffle_id_gen_z1_by_party1/10000
+                        time:   [14.214 ms 14.250 ms 14.289 ms]
+Found 1 outliers among 10 measurements (10.00%)
+  1 (10.00%) high severe
+
+shuffle_id_gen_id_by_party2/10000
+                        time:   [12.612 ms 12.647 ms 12.702 ms]
+Found 1 outliers among 10 measurements (10.00%)
+  1 (10.00%) high severe
+
+shuffle_id_gen_z2_by_party2/100000
+                        time:   [84.983 ms 85.178 ms 85.545 ms]
+Found 2 outliers among 10 measurements (20.00%)
+  2 (20.00%) high severe
+
+shuffle_id_gen_z1_by_party1/100000
+                        time:   [148.79 ms 149.59 ms 150.82 ms]
+Found 1 outliers among 10 measurements (10.00%)
+  1 (10.00%) high mild
+
+shuffle_id_gen_id_by_party2/100000
+                        time:   [141.79 ms 142.24 ms 142.75 ms]
+Found 2 outliers among 10 measurements (20.00%)
+  1 (10.00%) high mild
+  1 (10.00%) high severe
+
+shuffle_id_gen_z2_by_party2/1000000
+                        time:   [844.85 ms 847.76 ms 851.12 ms]
+
+shuffle_id_gen_z1_by_party1/1000000
+                        time:   [1.4420 s 1.4470 s 1.4537 s]
+Found 1 outliers among 10 measurements (10.00%)
+  1 (10.00%) high mild
+
+shuffle_id_gen_id_by_party2/1000000
+                        time:   [1.3840 s 1.3915 s 1.3993 s]
+
+shuffle_id_gen_z2_by_party2/10000000
+                        time:   [242.03 s 252.71 s 261.83 s]
+Found 1 outliers among 10 measurements (10.00%)
+  1 (10.00%) low mild
+
+shuffle_id_gen_z1_by_party1/10000000
+                        time:   [66.171 s 79.989 s 95.549 s]
+

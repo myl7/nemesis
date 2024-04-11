@@ -1,0 +1,10 @@
+gen_compare/10000       time:   [134.41 ms 134.91 ms 135.57 ms]
+                        change: [+23.377% +24.750% +26.310%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 1 outliers among 10 measurements (10.00%)
+  1 (10.00%) high mild
+
+gen_compare/100000      time:   [1.3315 s 1.3339 s 1.3366 s]
+                        change: [-98.821% -98.812% -98.802%] (p = 0.00 < 0.05)
+                        Performance has improved.
+

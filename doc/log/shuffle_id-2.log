@@ -1,0 +1,13 @@
+shuffle_id_gen_z2_by_party2/10000000
+                        time:   [182.85 s 197.58 s 211.23 s]
+                        change: [-16.831% -7.7515% +2.2594%] (p = 0.16 > 0.05)
+                        No change in performance detected.
+
+shuffle_id_gen_z1_by_party1/10000000
+                        time:   [43.928 s 49.054 s 53.811 s]
+                        change: [-26.100% -9.6345% +10.726%] (p = 0.38 > 0.05)
+                        No change in performance detected.
+
+shuffle_id_gen_id_by_party2/10000000
+                        time:   [303.60 s 312.94 s 322.30 s]
+

@@ -1,0 +1,4 @@
+msp_compare/1000000     time:   [48.381 s 48.777 s 49.128 s]
+                        change: [+864.13% +878.65% +894.58%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+

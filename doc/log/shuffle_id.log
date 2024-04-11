@@ -1,0 +1,17 @@
+shuffle_id_gen_z2_by_party2/1000000
+                        time:   [8.1628 s 8.1797 s 8.1955 s]
+                        change: [+860.77% +864.87% +868.81%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+
+shuffle_id_gen_z1_by_party1/1000000
+                        time:   [14.623 s 14.671 s 14.724 s]
+                        change: [+908.22% +913.85% +919.43%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+
+shuffle_id_gen_id_by_party2/1000000
+                        time:   [12.973 s 12.984 s 12.997 s]
+                        change: [+827.82% +833.09% +838.23%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 1 outliers among 10 measurements (10.00%)
+  1 (10.00%) high mild
+
