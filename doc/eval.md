@@ -1,5 +1,9 @@
 # Evaluation for sending
 
+The evaluation parameters are updated once.
+Please refer the benchmarks for the latest parameters.
+But the documentation can still help to understand what is benchmarked for a particular benchmark.
+
 ## Communication additional payload for ID
 
 164 B
