@@ -31,7 +31,7 @@ fn bench(c: &mut Criterion) {
     let eems_client = rt.block_on(async { EemsForSendClient::connect(eems_url).await.unwrap() });
     let sender = Sender::new(sender_id, sender_id_sign, eems_client);
 
-    let body_size = 1000; // 1KB same as Peale
+    let body_size = 4096; // 1KB same as Peale
     let mut body = vec![0; body_size];
     thread_rng().fill_bytes(&mut body);
     let shared_secret: [u8; 32] = thread_rng().gen();

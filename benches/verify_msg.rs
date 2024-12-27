@@ -33,7 +33,7 @@ fn from_body_size(c: &mut Criterion) {
         .unwrap();
     let receiver = Receiver::new(eems_pk);
 
-    let body_size_iter = (3..13).into_iter().map(|x| 2usize.pow(x));
+    let body_size_iter = (12..13).into_iter().map(|x| 2usize.pow(x));
     body_size_iter.for_each(|body_size| {
         let msg_key: SymK = thread_rng().gen();
         let mut body = vec![0; body_size];
@@ -49,21 +49,21 @@ fn from_body_size(c: &mut Criterion) {
         );
     });
 
-    let body_size_iter = (1300..=4000).step_by(300);
-    body_size_iter.for_each(|body_size| {
-        let msg_key: SymK = thread_rng().gen();
-        let mut body = vec![0; body_size];
-        thread_rng().fill_bytes(&mut body);
-        let msg_id = rt.block_on(async { sender.gen_id(&body, msg_key).await.unwrap() });
+    // let body_size_iter = (1300..=4000).step_by(300);
+    // body_size_iter.for_each(|body_size| {
+    //     let msg_key: SymK = thread_rng().gen();
+    //     let mut body = vec![0; body_size];
+    //     thread_rng().fill_bytes(&mut body);
+    //     let msg_id = rt.block_on(async { sender.gen_id(&body, msg_key).await.unwrap() });
 
-        c.bench_with_input(
-            BenchmarkId::new("verify_msg", body_size),
-            &body_size,
-            |b, _| {
-                b.iter(|| black_box(receiver.verify_msg(&body, &msg_id).unwrap()));
-            },
-        );
-    });
+    //     c.bench_with_input(
+    //         BenchmarkId::new("verify_msg", body_size),
+    //         &body_size,
+    //         |b, _| {
+    //             b.iter(|| black_box(receiver.verify_msg(&body, &msg_id).unwrap()));
+    //         },
+    //     );
+    // });
 }
 
 criterion_group!(benches, from_body_size);

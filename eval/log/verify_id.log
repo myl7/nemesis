@@ -1,0 +1,5 @@
+verify_msg/4096         time:   [42.135 µs 42.143 µs 42.153 µs]
+Found 11 outliers among 100 measurements (11.00%)
+  1 (1.00%) low severe
+  4 (4.00%) high mild
+  6 (6.00%) high severe

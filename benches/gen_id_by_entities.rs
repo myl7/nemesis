@@ -44,7 +44,7 @@ fn from_body_size(c: &mut Criterion) {
     let pub_src = Box::new(PubSrcImpl::new(sender_pk));
     let eems = EemsForSendImpl::new(sk, pub_src, db);
 
-    let body_size_iter = (3..13).into_iter().map(|x| 2usize.pow(x));
+    let body_size_iter = (4..13).into_iter().step_by(2).map(|x| 2usize.pow(x));
     body_size_iter.clone().for_each(|body_size| {
         c.bench_with_input(
             BenchmarkId::new("gen_id_by_user", body_size),
