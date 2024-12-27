@@ -16,3 +16,6 @@ msp_compare/1000000     time:   [2.4282 s 2.4305 s 2.4329 s]
 Found 1 outliers among 10 measurements (10.00%)
   1 (10.00%) high mild
 
+actually 10**8
+Warning: Unable to complete 10 samples in 5.0s. You may wish to increase target time to 2410.1s.
+Benchmarking msp_compare/10000000: Collecting 10 samples in estimated 2410.1 s (10 iterations)

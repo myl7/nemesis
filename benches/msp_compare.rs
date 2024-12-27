@@ -11,7 +11,8 @@ use rand::prelude::*;
 use eemod::msp::MspModeration;
 
 fn from_item_num(c: &mut Criterion) {
-    let item_num_iter = [3, 4, 5, 6].into_iter().map(|x| 10usize.pow(x));
+    println!("actually 10**8");
+    let item_num_iter = [7].into_iter().map(|x| 10usize.pow(x));
     let max_item_num = item_num_iter.clone().last().unwrap();
 
     let party = true;
@@ -55,6 +56,7 @@ fn from_item_num(c: &mut Criterion) {
             &item_num,
             |b, _| {
                 b.iter(|| {
+                    for i in 0..10 {
                     black_box({
                         let mut values = vec![0; item_num];
                         msp_mod.check_threhold(
@@ -67,8 +69,8 @@ fn from_item_num(c: &mut Criterion) {
                                 .as_ref(),
                             &mut values[..item_num],
                         );
-                        values
                     })
+                }
                 });
             },
         );
