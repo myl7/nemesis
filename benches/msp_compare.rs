@@ -1,28 +1,32 @@
 use criterion::{black_box, criterion_group, criterion_main, BenchmarkId, Criterion};
-use dcf::prg::Aes256HirosePrg;
-use dcf::{BoundState, CmpFn, Dcf, DcfImpl};
+// use dcf::prg::Aes256HirosePrg;
+// use dcf::{BoundState, CmpFn, Dcf, DcfImpl};
+use dpf_dcf::prg::Aes256HirosePrg as DcfAes256HirosePrg;
+use dpf_dcf::{Dpf as Dcf, DpfImpl as DcfImpl, Share, PointFn};
+use dpf_dcf::group::byte::ByteGroup;
+
 use group_math::int::U128Group;
 use rand::prelude::*;
 
 use eemod::msp::MspModeration;
 
 fn from_item_num(c: &mut Criterion) {
-    let item_num_iter = [1, 2, 5, 10, 12].into_iter().map(|x| x * 3600 * 11);
+    let item_num_iter = [3, 4, 5, 6].into_iter().map(|x| 10usize.pow(x));
     let max_item_num = item_num_iter.clone().last().unwrap();
 
     let party = true;
     let prg_key: [u8; 32] = thread_rng().gen();
-    let prg = Aes256HirosePrg::new([&prg_key]);
+    let prg = DcfAes256HirosePrg::new([&prg_key]);
     let dcf = DcfImpl::new(prg);
-    let f = CmpFn::<16, 16, U128Group> {
+    let f = PointFn::<16, 16, ByteGroup<16>> {
         alpha: 10u128.to_le_bytes(),
-        beta: U128Group(1),
+        beta: ByteGroup::from([0xff; 16]),
     };
     let s00 = thread_rng().gen();
     let s01 = thread_rng().gen();
     let kappa_shares: Vec<_> = (0..max_item_num)
         .map(|_| {
-            let mut share = dcf.gen(&f, [&s00, &s01], BoundState::GtBeta);
+            let mut share = dcf.gen(&f, [&s00, &s01]);
             share.s0s.remove(if party { 0 } else { 1 });
             share
         })
@@ -71,5 +75,9 @@ fn from_item_num(c: &mut Criterion) {
     });
 }
 
-criterion_group!(benches, from_item_num);
+criterion_group! {
+    name = benches;
+    config = Criterion::default().sample_size(10);
+    targets = from_item_num
+}
 criterion_main!(benches);

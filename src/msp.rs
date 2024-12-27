@@ -1,8 +1,12 @@
-use dcf::prg::Aes256HirosePrg as DcfAes256HirosePrg;
-use dcf::{Dcf, DcfImpl, Share};
+// use dcf::prg::Aes256HirosePrg as DcfAes256HirosePrg;
+// use dcf::{Dcf, DcfImpl, Share};
 use dpf::prg::Aes256HirosePrg as DpfAes256HirosePrg;
 use dpf::{Dpf, DpfImpl};
+use dcf::Share;
+use dpf_dcf::prg::Aes256HirosePrg as DcfAes256HirosePrg;
+use dpf_dcf::{Dpf as Dcf, DpfImpl as DcfImpl, Share as DpfDcfShare};
 use group_math::int::U128Group;
+use dpf_dcf::group::byte::ByteGroup;
 
 use crate::crypto;
 use crate::crypto::prelude::*;
@@ -139,7 +143,7 @@ impl MspModeration {
 
     pub fn check_threhold(
         &self,
-        kappa_shares: &[Share<16, U128Group>],
+        kappa_shares: &[DpfDcfShare<16, ByteGroup<16>>],
         gamma_shares: &[u128],
         values: &mut [u128],
     ) {
@@ -153,14 +157,14 @@ impl MspModeration {
             .iter()
             .zip(values.iter_mut())
             .for_each(|(kappa_share, value)| {
-                let mut buf = U128Group(0);
+                let mut buf = ByteGroup::from([0; 16]);
                 self.dcf.eval(
                     self.party,
                     &kappa_share,
                     &[&value.to_le_bytes()],
                     &mut [&mut buf],
                 );
-                *value = buf.0;
+                *value = u128::from_le_bytes(buf.0);
             });
     }
 }

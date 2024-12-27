@@ -1,0 +1,18 @@
+Benchmarking msp_compare/10000000: Warming up for 3.0000 s
+Warning: Unable to complete 10 samples in 5.0s. You may wish to increase target time to 241.6s.
+Benchmarking msp_compare/10000000: Collecting 10 samples in estimated 241.58 s (10 iteramsp_compare/10000000    time:   [24.117 s 24.120 s 24.124 s]
+                        change: [-0.2073% -0.1665% -0.1214%] (p = 0.00 < 0.05)
+                        Change within noise threshold.
+
+msp_compare/1000        time:   [2.3464 ms 2.3484 ms 2.3503 ms]
+Found 1 outliers among 10 measurements (10.00%)
+  1 (10.00%) high mild
+
+msp_compare/10000       time:   [24.048 ms 24.071 ms 24.093 ms]
+
+msp_compare/100000      time:   [242.03 ms 242.19 ms 242.36 ms]
+
+msp_compare/1000000     time:   [2.4282 s 2.4305 s 2.4329 s]
+Found 1 outliers among 10 measurements (10.00%)
+  1 (10.00%) high mild
+

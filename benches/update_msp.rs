@@ -8,7 +8,7 @@ use eemod::msp::MspModeration;
 use eemod::user::Reporter;
 
 fn from_item_num(c: &mut Criterion) {
-    let item_num_iter = [1, 2, 5, 10, 12].into_iter().map(|x| x * 3600 * 11);
+    let item_num_iter = [1000].into_iter().map(|x| x);
     let max_item_num = item_num_iter.clone().last().unwrap();
 
     let prg_key: [u8; 32] = thread_rng().gen();

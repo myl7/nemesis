@@ -1,0 +1,5 @@
+key generation time: 38.820475082s
+sign time: 16.39785ms
+verify time: 12.984245ms
+join time: 251.618µs
+verify k time: 50.644µs
