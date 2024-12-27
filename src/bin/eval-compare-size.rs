@@ -28,7 +28,7 @@ fn main() {
                     s: cw.s.to_vec(),
                     tl: cw.tl,
                     tr: cw.tr,
-                    v: cw.v.0.to_le_bytes().to_vec(),
+                    v: vec![],
                 })
                 .collect(),
         };
