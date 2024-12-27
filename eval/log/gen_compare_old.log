@@ -1,0 +1,18 @@
+gen_compare/10000       time:   [68.997 ms 69.057 ms 69.138 ms]
+                        change: [+23.771% +24.031% +24.383%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 1 outliers among 10 measurements (10.00%)
+  1 (10.00%) high severe
+
+gen_compare/100000      time:   [701.80 ms 703.10 ms 704.39 ms]
+                        change: [+23.845% +24.109% +24.411%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+
+Warning: Unable to complete 10 samples in 5.0s. You may wish to increase target time to 69.8s.
+Benchmarking gen_compare/1000000: Collecting 10 samples in estimated 69.829 s (10 iterations)
+
+Warning: Unable to complete 10 samples in 5.0s. You may wish to increase target time to 699.2s.
+Benchmarking gen_compare/1000000: Collecting 10 samples in estimated 699.24 s (10 iterations)
+
+Warning: Unable to complete 10 samples in 5.0s. You may wish to increase target time to 7008.5s.
+Benchmarking gen_compare/1000000: Collecting 10 samples in estimated 7008.5 s (10 iterations)
