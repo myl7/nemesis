@@ -1,0 +1,24 @@
+4
+Time elapsed in gen_z2_by_party2() is: 8.902565ms
+Time elapsed in gen_z1_by_party1() is: 12.254885ms
+Time elapsed in gen_id_by_party2() is: 12.393937ms
+
+5
+Time elapsed in gen_z2_by_party2() is: 88.955178ms
+Time elapsed in gen_z1_by_party1() is: 124.732087ms
+Time elapsed in gen_id_by_party2() is: 125.378946ms
+
+6
+Time elapsed in gen_z2_by_party2() is: 886.289716ms
+Time elapsed in gen_z1_by_party1() is: 1.240429197s
+Time elapsed in gen_id_by_party2() is: 1.244302815s
+
+7
+Time elapsed in gen_z2_by_party2() is: 9.030519029s
+Time elapsed in gen_z1_by_party1() is: 12.384407421s
+Time elapsed in gen_id_by_party2() is: 12.501418539s
+
+8
+Time elapsed in gen_z2_by_party2() is: 74.883267313s
+Time elapsed in gen_z1_by_party1() is: 125.365865897s
+Time elapsed in gen_id_by_party2() is: 117.475300143s
