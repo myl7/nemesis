@@ -1,6 +1,6 @@
-# Nemesis: Combating Abusive Information in Encrypted Messaging with Private Reporting
+# ANONYMIZED
 
-<!-- `eemod` = moderation (`mod`) of end-to-end encryption (`ee`) -->
+<!-- ANONYMIZED -->
 
 This is a [standard Rust project].
 Entrypoints are in `src/bin/` and `benches/`.
@@ -9,4 +9,4 @@ Entrypoints are in `src/bin/` and `benches/`.
 
 ## Evaluation
 
-See [doc/eval.md](doc/eval.md)
+See [doc](doc)
