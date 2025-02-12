@@ -11,6 +11,9 @@ Found 4 outliers among 100 measurements (4.00%)
   2 (2.00%) high mild
   2 (2.00%) high severe
 
+# Since the stack size is not enough for evaluating all points in oneshot, we modify the code to repeat evaluation.
+# You can see this by the numbers of the following log.
+
 Warning: Unable to complete 100 samples in 5.0s. You may wish to increase target time to 313.5s, or reduce sample count to 10.
 Benchmarking msp_compare/1000000: Collecting 100 samples in estimated 313.49 s (100 iterations)
 ^C

@@ -1,16 +1,20 @@
-gen_compare/39600       time:   [905.96 ms 907.31 ms 908.44 ms]
-Found 1 outliers among 10 measurements (10.00%)
-  1 (10.00%) low mild
+gen_compare/10000       time:   [55.657 ms 55.700 ms 55.762 ms]
 
-gen_compare/79200       time:   [1.7947 s 1.7981 s 1.8020 s]
-Found 2 outliers among 10 measurements (20.00%)
-  2 (20.00%) high mild
+gen_compare/100000      time:   [565.69 ms 566.51 ms 567.28 ms]
 
-gen_compare/198000      time:   [4.4968 s 4.5205 s 4.5441 s]
+# Since the stack size is not enough for evaluating all points in oneshot, we modify the code to repeat evaluation.
+# You can see this by the numbers of the following log.
 
-gen_compare/396000      time:   [9.8956 s 10.412 s 10.788 s]
-Found 2 outliers among 10 measurements (20.00%)
-  2 (20.00%) low severe
+Warning: Unable to complete 10 samples in 5.0s. You may wish to increase target time to 56.2s.
+Benchmarking gen_compare/1000000: Collecting 10 samples in estimated 56.156 s (10 iterations)
 
-gen_compare/475200      time:   [12.886 s 12.930 s 12.973 s]
+Warning: Unable to complete 10 samples in 5.0s. You may wish to increase target time to 563.3s.
+Benchmarking gen_compare/1000000: Collecting 10 samples in estimated 563.34 s (10 iterations)
 
+Warning: Unable to complete 10 samples in 5.0s. You may wish to increase target time to 5650.1s.
+Benchmarking gen_compare/1000000: Collecting 10 samples in estimated 5650.1 s (10 iterations)
+
+Gnuplot not found, using plotters backend
+Benchmarking gen_compare/1000000: Warming up for 3.0000 s
+Warning: Unable to complete 10 samples in 5.0s. You may wish to increase target time to 5616.9s.
+Benchmarking gen_compare/1000000: Collecting 10 samples in estimated 5616.9 s (10 iterations)

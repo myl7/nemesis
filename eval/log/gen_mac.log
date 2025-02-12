@@ -1,5 +1,0 @@
-gen_mac                 time:   [228.43 ns 228.47 ns 228.53 ns]
-Found 8 outliers among 100 measurements (8.00%)
-  2 (2.00%) high mild
-  6 (6.00%) high severe
-

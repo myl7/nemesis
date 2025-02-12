@@ -1,4 +1,5 @@
-gen_id_shares           time:   [13.890 µs 13.968 µs 14.049 µs]
-Found 1 outliers among 100 measurements (1.00%)
+gen_id_shares           time:   [10.263 µs 10.287 µs 10.318 µs]
+Found 10 outliers among 100 measurements (10.00%)
   1 (1.00%) high mild
+  9 (9.00%) high severe
 

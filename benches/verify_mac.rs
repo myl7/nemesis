@@ -5,7 +5,7 @@ use rand::prelude::*;
 use eemod::crypto::prelude::*;
 
 fn from_item_num(c: &mut Criterion) {
-    let item_num_iter = [4, 5, 6, 7, 8].into_iter().map(|x| 10usize.pow(x));
+    let item_num_iter = [2, 5].into_iter().map(|x| 10usize.pow(x));
     let max_item_num = item_num_iter.clone().last().unwrap();
 
     // In the previous procedure we have evaluated the DCF, so now we just have a bunch of values to be summed up

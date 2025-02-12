@@ -8,7 +8,7 @@ use eemod::msp::MspModeration;
 use eemod::user::Reporter;
 
 fn from_item_num(c: &mut Criterion) {
-    let item_num_iter = [100, 1000, 10000, 100000].into_iter().map(|x| x);
+    let item_num_iter = [100000].into_iter().map(|x| x);
     let max_item_num = item_num_iter.clone().last().unwrap();
 
     let prg_key: [u8; 32] = thread_rng().gen();
@@ -60,11 +60,10 @@ fn from_item_num(c: &mut Criterion) {
             &item_num,
             |b, _| {
                 b.iter(|| {
-                    black_box({
+                for _ in 0..100 {
                         let mut values = vec![0; item_num];
                         msp_mod.sum_report(&shares, &mut values);
-                        values
-                    })
+                }
                 });
             },
         );

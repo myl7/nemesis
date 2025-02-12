@@ -7,6 +7,8 @@ Found 1 outliers among 10 measurements (10.00%)
 gen_compare/100000      time:   [701.80 ms 703.10 ms 704.39 ms]
                         change: [+23.845% +24.109% +24.411%] (p = 0.00 < 0.05)
                         Performance has regressed.
+# Since the stack size is not enough for evaluating all points in oneshot, we modify the code to repeat evaluation.
+# You can see this by the numbers of the following log.
 
 Warning: Unable to complete 10 samples in 5.0s. You may wish to increase target time to 69.8s.
 Benchmarking gen_compare/1000000: Collecting 10 samples in estimated 69.829 s (10 iterations)

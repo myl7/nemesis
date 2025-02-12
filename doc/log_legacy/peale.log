@@ -1,0 +1,162 @@
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 38 filtered out; finished in 0.00s
+
+Benchmarking no source-tracking/send and receive/1000
+Benchmarking no source-tracking/send and receive/1000: Warming up for 3.0000 s
+Benchmarking no source-tracking/send and receive/1000: Collecting 100 samples in estimated 6.0175 s (10k iterations)
+Benchmarking no source-tracking/send and receive/1000: Analyzing
+no source-tracking/send and receive/1000
+                        time:   [225.30 us 227.45 us 229.67 us]
+                        change: [+2.2042% +2.9785% +3.8429%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 6 outliers among 100 measurements (6.00%)
+  6 (6.00%) high mild
+Benchmarking no source-tracking/send only/1000
+Benchmarking no source-tracking/send only/1000: Warming up for 3.0000 s
+Benchmarking no source-tracking/send only/1000: Collecting 100 samples in estimated 5.1202 s (10k iterations)
+Benchmarking no source-tracking/send only/1000: Analyzing
+no source-tracking/send only/1000
+                        time:   [131.25 us 131.61 us 132.00 us]
+Found 1 outliers among 100 measurements (1.00%)
+  1 (1.00%) high severe
+Benchmarking no source-tracking/receive only/1000
+Benchmarking no source-tracking/receive only/1000: Warming up for 3.0000 s
+Benchmarking no source-tracking/receive only/1000: Collecting 100 samples in estimated 5.9997 s (10k iterations)
+Benchmarking no source-tracking/receive only/1000: Analyzing
+no source-tracking/receive only/1000
+                        time:   [86.401 us 86.660 us 86.930 us]
+
+Benchmarking with source-tracking/author and receive/1000
+Benchmarking with source-tracking/author and receive/1000: Warming up for 3.0000 s
+Benchmarking with source-tracking/author and receive/1000: Collecting 100 samples in estimated 6.4170 s (10k iterations)
+Benchmarking with source-tracking/author and receive/1000: Analyzing
+with source-tracking/author and receive/1000
+                        time:   [295.25 us 296.36 us 297.56 us]
+Benchmarking with source-tracking/forward and receive/1000
+Benchmarking with source-tracking/forward and receive/1000: Warming up for 3.0000 s
+Benchmarking with source-tracking/forward and receive/1000: Collecting 100 samples in estimated 6.7419 s (10k iterations)
+Benchmarking with source-tracking/forward and receive/1000: Analyzing
+with source-tracking/forward and receive/1000
+                        time:   [335.11 us 336.42 us 337.77 us]
+Found 2 outliers among 100 measurements (2.00%)
+  2 (2.00%) high mild
+Benchmarking with source-tracking/only author/1000
+Benchmarking with source-tracking/only author/1000: Warming up for 3.0000 s
+Benchmarking with source-tracking/only author/1000: Collecting 100 samples in estimated 7.4034 s (15k iterations)
+Benchmarking with source-tracking/only author/1000: Analyzing
+with source-tracking/only author/1000
+                        time:   [147.56 us 148.01 us 148.48 us]
+Found 4 outliers among 100 measurements (4.00%)
+  1 (1.00%) high mild
+  3 (3.00%) high severe
+Benchmarking with source-tracking/only forward/1000
+Benchmarking with source-tracking/only forward/1000: Warming up for 3.0000 s
+Benchmarking with source-tracking/only forward/1000: Collecting 100 samples in estimated 7.2835 s (15k iterations)
+Benchmarking with source-tracking/only forward/1000: Analyzing
+with source-tracking/only forward/1000
+                        time:   [145.62 us 146.15 us 146.68 us]
+Found 2 outliers among 100 measurements (2.00%)
+  2 (2.00%) high mild
+Benchmarking with source-tracking/receive authored/1000
+Benchmarking with source-tracking/receive authored/1000: Warming up for 3.0000 s
+Benchmarking with source-tracking/receive authored/1000: Collecting 100 samples in estimated 6.4087 s (10k iterations)
+Benchmarking with source-tracking/receive authored/1000: Analyzing
+with source-tracking/receive authored/1000
+                        time:   [131.20 us 131.71 us 132.24 us]
+Benchmarking with source-tracking/receive forward/1000
+Benchmarking with source-tracking/receive forward/1000: Warming up for 3.0000 s
+Benchmarking with source-tracking/receive forward/1000: Collecting 100 samples in estimated 7.0872 s (10k iterations)
+Benchmarking with source-tracking/receive forward/1000: Analyzing
+with source-tracking/receive forward/1000
+                        time:   [180.37 us 181.08 us 181.84 us]
+Found 5 outliers among 100 measurements (5.00%)
+  2 (2.00%) low mild
+  3 (3.00%) high mild
+Benchmarking with source-tracking/process send/1000
+Benchmarking with source-tracking/process send/1000: Warming up for 3.0000 s
+Benchmarking with source-tracking/process send/1000: Collecting 100 samples in estimated 5.2075 s (10k iterations)
+Benchmarking with source-tracking/process send/1000: Analyzing
+with source-tracking/process send/1000
+                        time:   [17.000 us 17.045 us 17.094 us]
+Found 6 outliers among 100 measurements (6.00%)
+  4 (4.00%) high mild
+  2 (2.00%) high severe
+Benchmarking with source-tracking/report/1000
+Benchmarking with source-tracking/report/1000: Warming up for 3.0000 s
+Benchmarking with source-tracking/report/1000: Collecting 100 samples in estimated 5.4121 s (10k iterations)
+Benchmarking with source-tracking/report/1000: Analyzing
+with source-tracking/report/1000
+                        time:   [45.540 us 45.710 us 45.881 us]
+Found 2 outliers among 100 measurements (2.00%)
+  2 (2.00%) high mild
+
+Benchmarking scheme 2/author and receive/1000
+Benchmarking scheme 2/author and receive/1000: Warming up for 3.0000 s
+Benchmarking scheme 2/author and receive/1000: Collecting 100 samples in estimated 6.3238 s (400 iterations)
+Benchmarking scheme 2/author and receive/1000: Analyzing
+scheme 2/author and receive/1000
+                        time:   [7.3720 ms 7.3901 ms 7.4088 ms]
+Benchmarking scheme 2/forward and receive/1000
+Benchmarking scheme 2/forward and receive/1000: Warming up for 3.0000 s
+Benchmarking scheme 2/forward and receive/1000: Collecting 100 samples in estimated 6.5205 s (400 iterations)
+Benchmarking scheme 2/forward and receive/1000: Analyzing
+scheme 2/forward and receive/1000
+                        time:   [7.6050 ms 7.6177 ms 7.6308 ms]
+Found 1 outliers among 100 measurements (1.00%)
+  1 (1.00%) high mild
+Benchmarking scheme 2/only author/1000
+Benchmarking scheme 2/only author/1000: Warming up for 3.0000 s
+Benchmarking scheme 2/only author/1000: Collecting 100 samples in estimated 5.2649 s (500 iterations)
+Benchmarking scheme 2/only author/1000: Analyzing
+scheme 2/only author/1000
+                        time:   [2.1921 ms 2.2007 ms 2.2097 ms]
+Found 2 outliers among 100 measurements (2.00%)
+  2 (2.00%) high mild
+Benchmarking scheme 2/only forward/1000
+Benchmarking scheme 2/only forward/1000: Warming up for 3.0000 s
+Benchmarking scheme 2/only forward/1000: Collecting 100 samples in estimated 5.2923 s (500 iterations)
+Benchmarking scheme 2/only forward/1000: Analyzing
+scheme 2/only forward/1000
+                        time:   [2.1963 ms 2.2045 ms 2.2132 ms]
+Found 2 outliers among 100 measurements (2.00%)
+  2 (2.00%) high mild
+Benchmarking scheme 2/only receive (author)/1000
+Benchmarking scheme 2/only receive (author)/1000: Warming up for 3.0000 s
+Benchmarking scheme 2/only receive (author)/1000: Collecting 100 samples in estimated 6.2103 s (400 iterations)
+Benchmarking scheme 2/only receive (author)/1000: Analyzing
+scheme 2/only receive (author)/1000
+                        time:   [5.0115 ms 5.0272 ms 5.0437 ms]
+Found 1 outliers among 100 measurements (1.00%)
+  1 (1.00%) high mild
+Benchmarking scheme 2/only receive (forward)/1000
+Benchmarking scheme 2/only receive (forward)/1000: Warming up for 3.0000 s
+Benchmarking scheme 2/only receive (forward)/1000: Collecting 100 samples in estimated 6.3042 s (400 iterations)
+Benchmarking scheme 2/only receive (forward)/1000: Analyzing
+scheme 2/only receive (forward)/1000
+                        time:   [5.1073 ms 5.1232 ms 5.1395 ms]
+Found 1 outliers among 100 measurements (1.00%)
+  1 (1.00%) high mild
+Benchmarking scheme 2/report/1000
+Benchmarking scheme 2/report/1000: Warming up for 3.0000 s
+Benchmarking scheme 2/report/1000: Collecting 100 samples in estimated 5.7702 s (500 iterations)
+Benchmarking scheme 2/report/1000: Analyzing
+scheme 2/report/1000    time:   [2.1887 ms 2.1945 ms 2.2004 ms]
+Found 1 outliers among 100 measurements (1.00%)
+  1 (1.00%) high mild
+Benchmarking scheme 2/send, only user/1000
+Benchmarking scheme 2/send, only user/1000: Warming up for 3.0000 s
+Benchmarking scheme 2/send, only user/1000: Collecting 100 samples in estimated 5.0722 s (500 iterations)
+Benchmarking scheme 2/send, only user/1000: Analyzing
+scheme 2/send, only user/1000
+                        time:   [1.4424 ms 1.4460 ms 1.4498 ms]
+Benchmarking scheme 2/receive, only platform/1000
+Benchmarking scheme 2/receive, only platform/1000: Warming up for 3.0000 s
+Benchmarking scheme 2/receive, only platform/1000: Collecting 100 samples in estimated 5.4127 s (700 iterations)
+Benchmarking scheme 2/receive, only platform/1000: Analyzing
+scheme 2/receive, only platform/1000
+                        time:   [2.6396 ms 2.6474 ms 2.6555 ms]
+Found 2 outliers among 100 measurements (2.00%)
+  2 (2.00%) high mild
+

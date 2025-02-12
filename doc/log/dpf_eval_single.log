@@ -1,0 +1,13 @@
+# Since the stack size is not enough for evaluating all points in oneshot, we modify the code to repeat evaluation.
+# You can see this by the numbers of the following log.
+Benchmarking update_msp/100000: Warming up for 3.0000 s
+Warning: Unable to complete 100 samples in 5.0s. You may wish to increase target time to 23.4s, or reduce sample count to 20.
+Benchmarking update_msp/100000: Collecting 100 samples in estimated 23.414 s (100 iterations)^C
+
+Benchmarking update_msp/100000: Warming up for 3.0000 s
+Warning: Unable to complete 100 samples in 5.0s. You may wish to increase target time to 240.5s, or reduce sample count to 10.
+Benchmarking update_msp/100000: Collecting 100 samples in estimated 240.52 s (100 iterations)
+
+Warning: Unable to complete 100 samples in 5.0s. You may wish to increase target time to 2347.5s, or reduce sample count to 10.
+Benchmarking update_msp/100000: Collecting 100 samples in estimated 2347.5 s (100 iterations)
+^C
